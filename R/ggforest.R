@@ -104,7 +104,7 @@ ggforest <- function(model, data = NULL,
   toShowExpClean <- toShowExpClean[nrow(toShowExpClean):1, ]
 
   rangeb <- range(toShowExpClean$conf.low, toShowExpClean$conf.high, na.rm = TRUE)
-  breaks <- axisTicks(rangeb/2, log = TRUE, nint = 7)
+  breaks <- axisTicks(rangeb/2, log = TRUE, nint = 10)
   rangeplot <- rangeb
   # make plot twice as wide as needed to create space for annotations
   rangeplot[1] <- rangeplot[1] - diff(rangeb)
@@ -136,7 +136,7 @@ ggforest <- function(model, data = NULL,
     scale_y_log10(
       name = "",
       labels = sprintf("%g", breaks),
-      expand = c(0.02, 0.02),
+      expand = c(0.1, 0.1),
       breaks = breaks) +
     theme_light() +
     theme(panel.grid.minor.y = element_blank(),
